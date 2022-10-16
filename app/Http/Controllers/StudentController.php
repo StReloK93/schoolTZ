@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Subjects;
-
+use App\Models\Student;
+use App\Http\Requests\StudentRegisterRequest;
+use Hash;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Subjects::withCount('students')->get();
+        return Student::all();
     }
 
     /**
@@ -24,9 +25,12 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRegisterRequest $request)
     {
-        return Subjects::create($request->all());
+        $params = $request->only('name','email','role_id','password','group_id');
+        $params['password'] = Hash::make($params['password']);
+
+        return Student::create($params);
     }
 
     /**
@@ -37,7 +41,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        return Subjects::with('students')->find($id);
+        return Student::find($id);
     }
 
     /**
@@ -49,7 +53,17 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Subjects::find($id)->update(['name' => $request->name]);
+        $student = Student::find($id);
+        if($request->email != $student->email){
+            $request->validate([
+                'email' => 'required|email|unique:students',
+            ]);
+        }
+        
+        $student->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
     }
 
     /**
@@ -60,6 +74,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Subjects::find($id)->delete();
+        Student::find($id)->delete();
+    }
+
+
+    public function studentGrades($id){
+        return Student::with('grades')->find($id);
     }
 }

@@ -26,6 +26,11 @@ class Student extends Authenticatable
     }
 
 
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+
     protected $casts = [
         'created_at' => 'datetime:Y-M-d',
     ];

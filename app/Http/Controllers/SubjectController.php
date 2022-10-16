@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Subjects;
-class SubjectsController extends Controller
+use App\Models\Subject;
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        return Subjects::all();
+        return Subject::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        return Subjects::create($request->all());
+        return Subject::create($request->all());
     }
 
     /**
@@ -47,7 +47,7 @@ class SubjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Subjects::find($id)->update(['name' => $request->name]);
+        Subject::find($id)->update(['name' => $request->name]);
     }
 
     /**
@@ -58,6 +58,6 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        Subjects::find($id)->delete();
+        Subject::find($id)->delete();
     }
 }

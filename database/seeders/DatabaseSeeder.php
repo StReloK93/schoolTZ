@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Student;
-use App\Models\Subjects;
+use App\Models\Subject;
 use App\Models\Grade;
 use App\Models\Role;
 
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         Student::factory(30)->create();
 
-        Subjects::factory(10)->create();
+        Subject::factory(10)->create();
 
         Grade::factory(60)->create();
 

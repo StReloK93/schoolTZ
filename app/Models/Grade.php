@@ -10,4 +10,12 @@ class Grade extends Model
     use HasFactory;
 
     protected $fillable = ['student_id' ,'subject_id' , 'grade'];
+
+
+    protected $with = ['subjects'];
+
+    public function subjects()
+    {
+        return $this->belongsTo(Subject::class , 'subject_id' ,'id');
+    }
 }

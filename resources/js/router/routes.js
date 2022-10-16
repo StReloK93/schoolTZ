@@ -83,6 +83,21 @@ export default [
 			guard: 'auth',
 			role: 3,
 		},
+		redirect: {
+			name: 'schedulestudent'
+		},
+		children: [
+			{
+				path: '',
+				name: 'schedulestudent',
+				component: () => import('../pages/Student/Routes/ScheduleStudent.vue')
+			},
+			{
+				path: 'grades',
+				name: 'gradesstudent',
+				component: () => import('../pages/Student/Routes/GradesStudent.vue')
+			},
+		]
 	},
 
 

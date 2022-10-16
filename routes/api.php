@@ -4,8 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GradeController;
 
 use App\Models\Role;
 
@@ -40,10 +41,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // only directors
 Route::middleware(['auth:sanctum', 'abilities:director'])->group(function () {
-    Route::apiResource('subjects', SubjectsController::class);
+    Route::apiResource('subjects', SubjectController::class);
     Route::apiResource('groups', GroupController::class);
     Route::apiResource('students', StudentController::class);
-
+    
 });
 
 
@@ -57,7 +58,9 @@ Route::middleware(['auth:sanctum', 'abilities:teacher'])->group(function () {
 
 // only students
 Route::middleware(['auth:students', 'abilities:student'])->group(function () {
-    Route::apiResource('students', StudentController::class);
+
+    Route::get('studentgrades/{id}', [StudentController::class, 'studentGrades']);
+    
 
 
 });
