@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        // baho
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
-            $table->integer('subject_id');
-            $table->integer('grade');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('roles');
     }
 };

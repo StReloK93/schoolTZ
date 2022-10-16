@@ -3,9 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Student extends Model
+class Student extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory;
+
+
+    protected $with = ['role'];
+    
+    protected $guard = 'student';
+
+    protected $fillable = ['name','group_id', 'password' , 'role_id' , 'email'];
+
+    protected $hidden = ['password'];
+
+
+    public function role()
+    {
+        return $this->hasOne(Role::class , 'id' , 'role_id');
+    }
+
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-M-d',
+    ];
 }

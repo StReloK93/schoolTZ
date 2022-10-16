@@ -1,7 +1,20 @@
-import {createApp} from 'vue'
+import './bootstrap'
+import { AgGridVue } from "ag-grid-vue3";
+import { createApp } from 'vue'
 
 import App from './main/App.vue'
-import './main/app.css'
+import store from './main/store'
+import router from './router'
+import HomePage from './components/HomePage.vue'
 
 
-createApp(App).mount("#app")
+store.dispatch('getUser').then(() => {
+
+    createApp(App)
+        .component('HomePage', HomePage)
+        .component('AgGridVue', AgGridVue)
+        .use(store)
+        .use(router)
+        .mount("#app")
+
+})

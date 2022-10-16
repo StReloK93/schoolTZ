@@ -1,9 +1,3 @@
 <template>
-    <div class="bg-red-600">
-        Hello moto
-    </div>
+    <router-view></router-view>
 </template>
-
-<script setup>
-
-</script>
