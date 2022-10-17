@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Student;
-use App\Models\Subjects;
+use App\Models\Subject;
 
 
 /**
@@ -21,7 +21,7 @@ class GradeFactory extends Factory
     {
         return [
             'student_id' => Student::all()->random(),
-            'subject_id' => Subjects::all()->random(),
+            'subject_id' => Subject::all()->random(),
             'grade' => rand(2, 5),
         ];
     }

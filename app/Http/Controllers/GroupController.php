@@ -13,10 +13,14 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         return Group::withCount('students')->get();
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -24,10 +28,14 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         return Group::create($request->all());
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -40,6 +48,10 @@ class GroupController extends Controller
         return Group::with('students')->find($id);
     }
 
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -51,6 +63,9 @@ class GroupController extends Controller
     {
         Group::find($id)->update(['name' => $request->name]);
     }
+
+
+    
 
     /**
      * Remove the specified resource from storage.

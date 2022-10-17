@@ -97,6 +97,11 @@ export default [
 				name: 'gradesstudent',
 				component: () => import('../pages/Student/Routes/GradesStudent.vue')
 			},
+			{
+				path: 'subject/:id',
+				name: 'subjectstudent',
+				component: () => import('../pages/Student/Routes/GradesStudent.vue')
+			},
 		]
 	},
 

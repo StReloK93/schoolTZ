@@ -33,7 +33,7 @@ Route::get('/roles' , function (){return Role::all();});
 // for all auth users
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user' , function (Request $request) {return $request->user();});
-
+    Route::apiResource('subjects', SubjectController::class);
 
 
 
@@ -41,7 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // only directors
 Route::middleware(['auth:sanctum', 'abilities:director'])->group(function () {
-    Route::apiResource('subjects', SubjectController::class);
     Route::apiResource('groups', GroupController::class);
     Route::apiResource('students', StudentController::class);
     
@@ -60,7 +59,6 @@ Route::middleware(['auth:sanctum', 'abilities:teacher'])->group(function () {
 Route::middleware(['auth:students', 'abilities:student'])->group(function () {
 
     Route::get('studentgrades/{id}', [StudentController::class, 'studentGrades']);
-    
 
 
 });
