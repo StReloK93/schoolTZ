@@ -12,9 +12,9 @@ class AuthService {
     public function login($request) {
 
         if($request->role_id == 3){
-            $guard = Auth::guard('studentsapi');
+            $guard = Auth::guard('students');
         }else{
-            $guard = Auth::guard('web');
+            $guard = Auth::guard('directors');
         }
 
         if ($guard->attempt($request->only('email', 'password', 'role_id'))) {
@@ -42,7 +42,7 @@ class AuthService {
             Student::create($params);
         }
         else{
-            User::create($params);
+            Admin::create($params);
         }
         return response()->json(true, 200);
 

@@ -20,9 +20,13 @@ class Student extends Authenticatable
     protected $hidden = ['password'];
 
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-M-d',
+    ];
+
     public function role()
     {
-        return $this->hasOne(Role::class , 'id' , 'role_id');
+        return $this->belongsTo(Role::class);
     }
 
 
@@ -31,7 +35,4 @@ class Student extends Authenticatable
         return $this->hasMany(Grade::class);
     }
 
-    protected $casts = [
-        'created_at' => 'datetime:Y-M-d',
-    ];
 }

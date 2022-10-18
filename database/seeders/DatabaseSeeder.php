@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\Director;
 use App\Models\Group;
 use App\Models\Student;
 use App\Models\Subject;
@@ -22,9 +22,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Role::factory(3)->state(new Sequence(['name' => 'director'],['name' => 'teacher'],['name' => 'student']))->create();
+        Role::factory(3)->state(new Sequence(
+            ['name' => 'director'],
+            ['name' => 'teacher'],
+            ['name' => 'student']
+        ))->create();
 
-        User::factory(6)->state(new Sequence(['role_id' => 1],['role_id' => 2]))->create();
+        Director::factory(3)->create();
 
         Group::factory(10)->create();
 
