@@ -50,6 +50,8 @@ import axios from "axios"
 const { id } = defineProps(['id'])
 
 
+
+
 const pageProps = reactive({
     columnDefs: [
         { field: "id", sortable: true, width: 70 },
@@ -124,7 +126,7 @@ function rowDelete(params) {
     }).then((result) => {
         if (result.isConfirmed) {
             axios.delete(`students/${row.id}`).then((response) => {
-                pageProps.gridApi.applyTransaction({ remove: [params.data] });
+                pageProps.gridApi.applyTransaction({ remove: [params.data] })
                 pageProps.rowData.length -=  1
             });
         }

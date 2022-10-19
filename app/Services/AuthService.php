@@ -2,20 +2,17 @@
 
 namespace App\Services;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Director;
+use App\Models\Teacher;
 use App\Models\Student;
+use App\Models\Role;
 use Auth;
 use Hash;
-use App\Models\Role;
 class AuthService {
 
     public function login($request) {
 
-        if($request->role_id == 3){
-            $guard = Auth::guard('students');
-        }else{
-            $guard = Auth::guard('directors');
-        }
+        $guard = $this->guard($request->role_id);
 
         if ($guard->attempt($request->only('email', 'password', 'role_id'))) {
 
@@ -41,9 +38,14 @@ class AuthService {
         if($params['role_id'] == 3){
             Student::create($params);
         }
-        else{
-            Admin::create($params);
+        elseif($params['role_id'] == 2){
+            Teacher::create($params);
         }
+        else{
+            Director::create($params);
+        }
+
+
         return response()->json(true, 200);
 
     }
@@ -55,4 +57,16 @@ class AuthService {
 
     }
 
+
+    public function guard($role_id){
+        if($role_id == 3){
+            return $guard = Auth::guard('students');
+        }
+        elseif ($role_id == 2) {
+            return $guard = Auth::guard('teachers');
+        }
+        else{
+            return $guard = Auth::guard('directors');
+        }
+    }
 }

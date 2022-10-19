@@ -15,4 +15,9 @@ class Subject extends Model
     protected $casts = [
         'created_at' => 'datetime:Y-M-d',
     ];
+
+
+    public function grades(){
+        return $this->hasMany(Grade::class);
+    }
 }

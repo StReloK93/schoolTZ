@@ -34,6 +34,7 @@ Route::get('/roles' , function (){return Role::all();});
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user' , function (Request $request) {return $request->user();});
     Route::apiResource('subjects', SubjectController::class);
+    Route::apiResource('grades', GradeController::class);
 
 
 
@@ -56,9 +57,10 @@ Route::middleware(['auth:sanctum', 'abilities:teacher'])->group(function () {
 
 
 // only students
-Route::middleware(['auth:students', 'abilities:student'])->group(function () {
+Route::middleware(['auth:sanctum', 'abilities:student'])->group(function () {
 
     Route::get('studentgrades/{id}', [StudentController::class, 'studentGrades']);
+    Route::get('studentsubjectgrades/{id}', [SubjectController::class, 'studentSubjectGrades']);
 
 
 });

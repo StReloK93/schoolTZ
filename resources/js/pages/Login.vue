@@ -4,7 +4,7 @@
 			<form class="p-5 shadow-2xl flex" @submit.prevent="login">
 				<section class="w-full bg-white relative">
                     <div>
-                        student@main.com
+                        student@mail.com
                     </div>
                     <div>
                         teacher@mail.com

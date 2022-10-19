@@ -60,4 +60,13 @@ class SubjectController extends Controller
     {
         Subject::find($id)->delete();
     }
+
+
+
+
+    public function studentSubjectGrades($id , Request $request){
+        $subject = Subject::find($id);
+        $subject->grades = $subject->grades()->where('student_id' , $request->user()->id)->get();
+        return $subject;
+    }
 }

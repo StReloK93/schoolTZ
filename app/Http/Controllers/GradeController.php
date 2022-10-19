@@ -29,9 +29,6 @@ class GradeController extends Controller
         return Grade::create($request->all());
     }
 
-
-
-
     /**
      * Update the specified resource in storage.
      *

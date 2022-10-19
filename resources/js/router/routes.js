@@ -53,6 +53,13 @@ export default [
 				name: 'singlegroupdirector',
 				component: () => import('../pages/Director/Routes/SingleGroupDirector.vue')
 			},
+			{
+				props: true,
+				path: 'timetable/:id',
+				name: 'timetabledirector',
+				component: () => import('../pages/Director/Routes/TimetableDirector.vue')
+			},
+			
 		]
 	},
 
@@ -75,6 +82,9 @@ export default [
 			},
 		]
 	},
+
+
+
 	{
 		path: '/student',
 		component: () => import('../pages/Student/HomeStudent.vue'),
@@ -93,14 +103,15 @@ export default [
 				component: () => import('../pages/Student/Routes/ScheduleStudent.vue')
 			},
 			{
-				path: 'grades',
-				name: 'gradesstudent',
-				component: () => import('../pages/Student/Routes/GradesStudent.vue')
+				path: 'subjects',
+				name: 'subjectlist',
+				component: () => import('../pages/Student/Routes/SubjectsStudent.vue')
 			},
 			{
+				props: true,
 				path: 'subject/:id',
 				name: 'subjectstudent',
-				component: () => import('../pages/Student/Routes/GradesStudent.vue')
+				component: () => import('../pages/Student/Routes/SubjectStudent.vue')
 			},
 		]
 	},

@@ -24,9 +24,9 @@ export default createStore({
             router.push({ name: `home${state.user.role_id}` })
         },
 
-        async register({ dispatch }, props) {
-            const result = await axios.post(props.path, props.formdata)
-            if (result.status == 200) dispatch('login', props.formdata)
+        async register({ dispatch }, formdata) {
+            const result = await axios.post('register', formdata)
+            if (result.status == 200) dispatch('login', formdata)
         },
 
 

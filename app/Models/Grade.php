@@ -11,11 +11,15 @@ class Grade extends Model
 
     protected $fillable = ['student_id' ,'subject_id' , 'grade'];
 
+    protected $with = ['subject'];
 
-    protected $with = ['subjects'];
-
-    public function subjects()
+    public function subject()
     {
-        return $this->belongsTo(Subject::class , 'subject_id' ,'id');
+        return $this->belongsTo(Subject::class);
     }
+
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-M-d',
+    ];
 }

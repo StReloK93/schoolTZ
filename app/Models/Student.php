@@ -12,8 +12,6 @@ class Student extends Authenticatable
 
 
     protected $with = ['role'];
-    
-    protected $guard = 'student';
 
     protected $fillable = ['name','group_id', 'password' , 'role_id' , 'email'];
 

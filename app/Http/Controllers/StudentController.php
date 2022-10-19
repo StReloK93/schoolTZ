@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
-use App\Http\Requests\StudentRegisterRequest;
+use App\Http\Requests\RegisterRequest;
 use Hash;
-
+use Auth;
 class StudentController extends Controller
 {
 /**
@@ -25,7 +25,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentRegisterRequest $request)
+    public function store(RegisterRequest $request)
     {
         $params = $request->only('name','email','role_id','password','group_id');
         $params['password'] = Hash::make($params['password']);
@@ -55,9 +55,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
         if($request->email != $student->email){
-            $request->validate([
-                'email' => 'required|email|unique:students',
-            ]);
+            $request->validate(['email' => 'required|email|unique:students']);
         }
         
         $student->update([
@@ -77,8 +75,4 @@ class StudentController extends Controller
         Student::find($id)->delete();
     }
 
-
-    public function studentGrades($id){
-        return Student::with('grades')->find($id);
-    }
 }

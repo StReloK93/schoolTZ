@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\StudentRegisterRequest;
 use App\Services\AuthService;
 
 
@@ -32,11 +31,8 @@ class AuthController extends Controller
         return $this->service->register($request);
     }
 
-    public function studentRegister(StudentRegisterRequest $request)
-    {
-        return $this->service->register($request);
-    }
 
+    
     public function logout(Request $request)
     {
         

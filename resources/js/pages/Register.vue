@@ -61,9 +61,7 @@ const errorMessage = ref("")
 
 function register(){
 	
-	const path = forminputs.role_id == 3 ? 'studentregister' : 'register'
-
-    store.dispatch('register', {formdata: forminputs , path: path}).then(res =>{
+    store.dispatch('register', forminputs).then(res =>{
     	errorMessage.value = ""
 	}, error =>{
 		const ErrorData = error.response.data.message

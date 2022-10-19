@@ -13,6 +13,7 @@ class Director extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
 
+    protected $table = 'directors';
     /**
      * The relationships that should always be loaded.
      *
