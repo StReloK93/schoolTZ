@@ -7,7 +7,7 @@
                 <button class="bg-gray-200 w-10 px-3 text-green-600 font-bold">+</button>
             </div>
         </main>
-        <table class="border w-full">
+        <table class="border w-full text-center">
             <tr>
                 <th class="border p-1.5">№</th>
                 <th class="border p-1.5">Monday</th>
@@ -18,34 +18,34 @@
                 <th class="border p-1.5">Saturday</th>
             </tr>
             <tr v-for="column in Timetable" :key="column">
-                <td class="p-2 border">1</td>
-                <td class="p-2 border">
-                    <select v-model="column.monday" @change="changedTimetable(column.id)">
+                <td class="border">1</td>
+                <td class="border">
+                    <select class="w-full py-2 outline-none" v-model="column.monday" @change="changedTimetable(column.id)">
                         <option v-for="(subject, index) in proarray" :key="index" :value="index">{{subject}}</option>
                     </select>
                 </td>
-                <td class="p-2 border">
-                    <select v-model="column.tuesday" @change="changedTimetable(column.id)">
+                <td class="border">
+                    <select class="w-full py-2 outline-none" v-model="column.tuesday" @change="changedTimetable(column.id)">
                         <option v-for="(subject, index) in proarray" :key="index" :value="index">{{subject}}</option>
                     </select>
                 </td>
-                <td class="p-2 border">
-                    <select v-model="column.wednesday" @change="changedTimetable(column.id)">
+                <td class="border">
+                    <select class="w-full py-2 outline-none" v-model="column.wednesday" @change="changedTimetable(column.id)">
                         <option v-for="(subject, index) in proarray" :key="index" :value="index">{{subject}}</option>
                     </select>
                 </td>
-                <td class="p-2 border">
-                    <select v-model="column.thursday" @change="changedTimetable(column.id)">
+                <td class="border">
+                    <select class="w-full py-2 outline-none" v-model="column.thursday" @change="changedTimetable(column.id)">
                         <option v-for="(subject, index) in proarray" :key="index" :value="index">{{subject}}</option>
                     </select>
                 </td>
-                <td class="p-2 border">
-                    <select v-model="column.friday" @change="changedTimetable(column.id)">
+                <td class="border">
+                    <select class="w-full py-2 outline-none" v-model="column.friday" @change="changedTimetable(column.id)">
                         <option v-for="(subject, index) in proarray" :key="index" :value="index">{{subject}}</option>
                     </select>
                 </td>
-                <td class="p-2 border">
-                    <select v-model="column.saturday" @change="changedTimetable(column.id)">
+                <td class="border">
+                    <select class="w-full py-2 outline-none" v-model="column.saturday" @change="changedTimetable(column.id)">
                         <option v-for="(subject, index) in proarray" :key="index" :value="index">{{subject}}</option>
                     </select>
                 </td>
@@ -109,4 +109,5 @@ function changedTimetable(rowId){
 
     console.log(changedRow)
 }
+
 </script>
