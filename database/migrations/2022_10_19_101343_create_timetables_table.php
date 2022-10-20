@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->integer('group_id');
-            $table->integer('Monday')->nullable();
-            $table->integer('Tuesday')->nullable();
-            $table->integer('Wednesday')->nullable();
-            $table->integer('Thursday')->nullable();
+            $table->integer('monday')->nullable();
+            $table->integer('tuesday')->nullable();
+            $table->integer('wednesday')->nullable();
+            $table->integer('thursday')->nullable();
             $table->integer('friday')->nullable();
             $table->integer('saturday')->nullable();
             $table->timestamps();

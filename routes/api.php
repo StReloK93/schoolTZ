@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\TimetableController;
 
 use App\Models\Role;
 
@@ -35,6 +36,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user' , function (Request $request) {return $request->user();});
     Route::apiResource('subjects', SubjectController::class);
     Route::apiResource('grades', GradeController::class);
+    Route::apiResource('timetables', TimetableController::class);
+    Route::get('timetables/group/{id}', [TimetableController::class , 'GroupTimetable']);
 
 
 

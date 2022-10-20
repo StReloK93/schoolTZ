@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Timetable extends Model
 {
     use HasFactory;
+
+    protected $fillable = [ 'group_id'];
 }
