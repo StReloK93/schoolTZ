@@ -19,8 +19,7 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-        $timeTable = Timetable::create($request->all());
-        return $timeTable->fresh();
+        return Timetable::create($request->all())->fresh();
     }
 
     /**
@@ -32,7 +31,8 @@ class TimetableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Timetable::find($id)->update(['name' => $request->name]);
+        $formdata = $request->only(['monday' , 'tuesday' ,'wednesday', 'thursday' , 'friday' , 'saturday']);
+        return Timetable::find($id)->update($formdata);
     }
 
     /**

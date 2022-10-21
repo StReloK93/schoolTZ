@@ -1,8 +1,7 @@
 <template>
     <home-page
         :navigatorRoutes="[
-            // { name: 'Groups', path: 'groupsdirector' },
-            // { name: 'Subjects', path: 'subjectsdirector' },
+            { name: 'Groups', path: 'groupsteacher' },
         ]"
     />
 </template>

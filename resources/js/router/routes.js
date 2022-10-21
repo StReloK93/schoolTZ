@@ -74,11 +74,20 @@ export default [
 			guard: 'auth',
 			role: 2,
 		},
+		redirect: {
+			name: 'groupsteacher'
+		},
 		children: [
 			{
-				path: 'student',
-				name: 'studentteacher',
-				component: () => import('../pages/Teacher/StudentTeacher.vue')
+				path: 'groups',
+				name: 'groupsteacher',
+				component: () => import('../pages/Teacher/Routes/GroupsTeacher.vue')
+			},
+			{
+				props: true,
+				path: 'groups/:group_id',
+				name: 'singlegroupsteacher',
+				component: () => import('../pages/Teacher/Routes/SingleGroupTeacher.vue')
 			},
 		]
 	},
@@ -100,7 +109,7 @@ export default [
 			{
 				path: '',
 				name: 'schedulestudent',
-				component: () => import('../pages/Student/Routes/ScheduleStudent.vue')
+				component: () => import('../pages/Student/Routes/TimetableStudent.vue')
 			},
 			{
 				path: 'subjects',

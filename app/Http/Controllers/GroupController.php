@@ -22,6 +22,7 @@ class GroupController extends Controller
 
 
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,12 +46,18 @@ class GroupController extends Controller
      */
     public function show($id)
     {
-        return Group::with('students')->find($id);
+        return Group::find($id);
     }
 
 
+    public function groupSubjectGrades($group_id, $subject){
+        $group = Group::find($group_id);
+        $group->students = $group->students()->whereHas('grades', function ($query) use($subject) {
+            return $query->where('subject_id', $subject);
+        })->get();
 
-
+        return $group;
+    }
 
     /**
      * Update the specified resource in storage.

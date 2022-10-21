@@ -14,7 +14,7 @@ use App\Models\Group;
 use App\Models\Subject;
 use App\Models\Grade;
 use App\Models\Role;
-
+use App\Models\Timetable;
 
 class DatabaseSeeder extends Seeder
 {
@@ -53,5 +53,6 @@ class DatabaseSeeder extends Seeder
 
         Grade::factory(200)->create();
 
+        Timetable::factory(3)->create();
     }
 }

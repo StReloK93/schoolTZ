@@ -9,5 +9,13 @@ class Timetable extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'group_id'];
+    protected $fillable = [
+        'group_id',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday'
+    ];
 }

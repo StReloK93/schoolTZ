@@ -1,7 +1,7 @@
 <template>
     <home-page
         :navigatorRoutes="[
-            { name: 'Schedule', path: 'schedulestudent' },
+            { name: 'Timetable', path: 'schedulestudent' },
             { name: 'Grades', path: 'subjectlist' },
         ]"
     />

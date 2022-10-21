@@ -3,8 +3,9 @@
         <main class="flex justify-between items-center">
             <h3 class="text-xl font-medium my-3 text-blue-500">Group Timetable</h3>
             <div>
-                <button class="bg-gray-200 w-10 mr-4 text-red-500 font-bold">-</button>
-                <button @click="addRow" class="bg-gray-200 w-10 px-3 text-green-600 font-bold">+</button>
+                <button @click="addRow" class="bg-gray-200 w-10 px-3 py-2 text-green-600 font-bold">
+                    <span class="relative -top-px">+</span>    
+                </button>
             </div>
         </main>
         <table class="border w-full text-center">
@@ -80,7 +81,13 @@ const pageProps = reactive({
 function changedTimetable(rowId){
     const changedRow = pageProps.timeTable.find(row => row.id === rowId)
 
-    console.log(changedRow)
+    for (const key in changedRow) {
+        if(changedRow[key] == "") changedRow[key] = null
+    }
+
+    axios.put(`/timetables/${changedRow.id}` , changedRow).then((response) =>{
+        console.log('updated');
+    })
 }
 
 axios.get('/subjects').then((response) => {
